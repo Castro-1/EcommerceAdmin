@@ -27,6 +27,21 @@ export default function ProductForm({
     goToProducts();
   }
 
+  async function uploadImage(e) {
+    const files = e.target?.files;
+    if (files?.length > 0) {
+      const data = new FormData();
+      for (const file of files) {
+        data.append("file", file);
+      }
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: data,
+      });
+      console.log(res);
+    }
+  }
+
   function goToProducts() {
     router.push("/products");
   }
@@ -42,7 +57,7 @@ export default function ProductForm({
       />
       <label>Photos</label>
       <div className="mb-2">
-        <label className="w-24 h-24 flex items-center justify-center text-sm gap-1 text-gray-500 rounded-lg bg-gray-200">
+        <label className="w-24 h-24 flex items-center justify-center text-sm gap-1 text-gray-500 rounded-lg bg-gray-200 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -58,7 +73,7 @@ export default function ProductForm({
             />
           </svg>
           <div>Upload</div>
-          <input type="file" className="hidden" />
+          <input type="file" className="hidden" onChange={uploadImage} />
         </label>
         {!images?.length && <div>No photos in this product.</div>}
       </div>
