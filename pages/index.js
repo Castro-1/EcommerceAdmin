@@ -4,6 +4,7 @@ import Image from "next/image";
 
 export default function Home() {
   const { data: session } = useSession();
+  console.log(session);
   return (
     <Layout>
       <div className="text-blue-900 flex justify-between">
