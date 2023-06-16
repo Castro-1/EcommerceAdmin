@@ -1,8 +1,5 @@
-import { Inter } from "next/font/google";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import Nav from "@/components/Nav";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Layout({ children }) {
   const { data: session } = useSession();
