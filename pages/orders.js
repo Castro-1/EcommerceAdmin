@@ -53,10 +53,9 @@ export default function OrdersPage() {
                 </td>
                 <td>
                   {order.line_items.map((line) => (
-                    <>
+                    <div key={line.price_data.product_data.name}>
                       {line.price_data.product_data.name} x {line.quantity}{" "}
-                      <br />
-                    </>
+                    </div>
                   ))}
                 </td>
               </tr>
