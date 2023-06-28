@@ -68,8 +68,6 @@ function Categories({ swal }) {
         confirmButtonText: "Yes, Delete!",
         confirmButtonColor: "#d55",
         reverseButtons: true,
-        didOpen: () => {},
-        didClose: () => {},
       })
       .then(async (result) => {
         if (result.isConfirmed) {
