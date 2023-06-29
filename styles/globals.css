@@ -24,7 +24,7 @@ h1 {
 }
 
 h2 {
-  @apply text-gray-800 mb-4 mt-6 text-[1.1rem];
+  @apply text-gray-800 mb-4 mt-6 text-lg;
 }
 
 label {
