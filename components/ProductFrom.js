@@ -26,6 +26,7 @@ export default function ProductForm({
   const [categories, setCategories] = useState([]);
   const router = useRouter();
   const [categoriesLoading, setCategoriesLoading] = useState(false);
+  const [deletedImages, setDeletedImages] = useState([]);
 
   useEffect(() => {
     setCategoriesLoading(true);
@@ -48,6 +49,11 @@ export default function ProductForm({
     if (_id) {
       //update
       await axios.put("/api/products/", { ...data, _id });
+      if (deletedImages.length > 0) {
+        for (let imageKey of deletedImages) {
+          await axios.delete("/api/upload?key=" + imageKey);
+        }
+      }
     } else {
       //create
       await axios.post("/api/products", data);
@@ -72,12 +78,13 @@ export default function ProductForm({
   }
 
   async function deleteImage(link) {
+    const imageKey = link.split("/").splice(-1)[0];
+    setDeletedImages((prev) => [...prev, imageKey]);
     setImages((oldImages) => {
       let newImages = [];
       for (let imageLink of oldImages) {
         if (imageLink !== link) {
           newImages.push(imageLink);
-          console.log(imageLink);
         }
       }
       return newImages;

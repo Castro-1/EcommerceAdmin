@@ -1,5 +1,9 @@
 import multiparty from "multiparty";
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import {
+  DeleteObjectCommand,
+  PutObjectCommand,
+  S3Client,
+} from "@aws-sdk/client-s3";
 import fs from "fs";
 import mime from "mime-types";
 import { mongooseConnect } from "@/lib/mongoose";
@@ -10,14 +14,6 @@ const bucketName = "next-ecommerce-jecg";
 export default async function handle(req, res) {
   await mongooseConnect();
   await isAdminRequest(req, res);
-  const form = new multiparty.Form();
-  const { fields, files } = await new Promise((resolve, reject) => {
-    form.parse(req, (err, fields, files) => {
-      if (err) reject(err);
-      resolve({ fields, files });
-    });
-  });
-
   const client = new S3Client({
     region: "us-east-2",
     credentials: {
@@ -26,25 +22,44 @@ export default async function handle(req, res) {
     },
   });
 
-  const links = [];
+  if (req.method === "POST") {
+    const form = new multiparty.Form();
+    const { fields, files } = await new Promise((resolve, reject) => {
+      form.parse(req, (err, fields, files) => {
+        if (err) reject(err);
+        resolve({ fields, files });
+      });
+    });
 
-  for (const file of files.file) {
-    const ext = file.originalFilename.split(".").pop();
-    const newFilename = Date.now() + "." + ext;
+    const links = [];
+
+    for (const file of files.file) {
+      const ext = file.originalFilename.split(".").pop();
+      const newFilename = Date.now() + "." + ext;
+      await client.send(
+        new PutObjectCommand({
+          Bucket: bucketName,
+          Key: newFilename,
+          Body: fs.readFileSync(file.path),
+          ACL: "public-read",
+          ContentType: mime.lookup(file.path),
+        })
+      );
+      const link = `https://${bucketName}.s3.amazonaws.com/${newFilename}`;
+      links.push(link);
+    }
+    return res.json({ links });
+  }
+  if (req.method === "DELETE") {
+    const imageKey = req.query.key;
     await client.send(
-      new PutObjectCommand({
+      new DeleteObjectCommand({
         Bucket: bucketName,
-        Key: newFilename,
-        Body: fs.readFileSync(file.path),
-        ACL: "public-read",
-        ContentType: mime.lookup(file.path),
+        Key: imageKey,
       })
     );
-    const link = `https://${bucketName}.s3.amazonaws.com/${newFilename}`;
-    links.push(link);
   }
-
-  return res.json({ links });
+  res.json("Deleted");
 }
 
 export const config = {
