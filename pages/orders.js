@@ -31,7 +31,7 @@ export default function OrdersPage() {
             <th>Paid</th>
             <th>Recipient</th>
             <th>Products</th>
-            <th></th>
+            <th>Fulfill</th>
           </tr>
         </thead>
         <tbody>
@@ -71,12 +71,12 @@ export default function OrdersPage() {
                       </div>
                     ))}
                   </td>
-                  <td>
+                  <td className="text-center">
                     <button
                       className="btn-primary"
                       onClick={() => handleFulfill(order._id)}
                     >
-                      fulfill
+                      &#x2713;
                     </button>
                   </td>
                 </tr>
