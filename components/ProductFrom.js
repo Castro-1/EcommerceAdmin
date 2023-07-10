@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Spinner from "./Spinner";
 import { ReactSortable } from "react-sortablejs";
+import Trash from "./icons/Trash";
 
 export default function ProductForm({
   _id,
@@ -68,6 +69,19 @@ export default function ProductForm({
       });
       setIsUploading(false);
     }
+  }
+
+  async function deleteImage(link) {
+    setImages((oldImages) => {
+      let newImages = [];
+      for (let imageLink of oldImages) {
+        if (imageLink !== link) {
+          newImages.push(imageLink);
+          console.log(imageLink);
+        }
+      }
+      return newImages;
+    });
   }
 
   function goToProducts() {
@@ -151,8 +165,14 @@ export default function ProductForm({
             images.map((link) => (
               <div
                 key={link}
-                className="h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200"
+                className="h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200 relative [&>*:nth-child(1)]:hover:visible"
               >
+                <div
+                  className="absolute bg-gray-300 p-1 rounded-full top-1 left-1 cursor-pointer invisible hover:bg-red-600 hover:text-white"
+                  onClick={() => deleteImage(link)}
+                >
+                  <Trash className="w-4 h-4" />
+                </div>
                 <img src={link} alt="" className="rounded-lg" />
               </div>
             ))}

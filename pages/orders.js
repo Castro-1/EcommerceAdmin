@@ -37,7 +37,7 @@ export default function OrdersPage() {
         <tbody>
           {isLoading && (
             <tr>
-              <td colSpan={4}>
+              <td colSpan={5}>
                 <div className="py-4">
                   <Spinner fullWidth={true} />
                 </div>
