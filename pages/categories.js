@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { withSwal } from "react-sweetalert2";
 import Spinner from "@/components/Spinner";
+import EditIcon from "@/components/icons/EditIcon";
+import TrashIcon from "@/components/icons/TrashIcon";
 
 function Categories({ swal }) {
   const [editedCategory, setEditedCategory] = useState(null);
@@ -146,7 +148,7 @@ function Categories({ swal }) {
           <button
             onClick={addProperty}
             type="button"
-            className="btn-default text-sm mb-2"
+            className="btn text-sm mb-2"
           >
             Add new property
           </button>
@@ -175,7 +177,7 @@ function Categories({ swal }) {
                   <button
                     type="button"
                     onClick={() => removeProperty(index)}
-                    className="btn-red"
+                    className="btn btn-red"
                   >
                     Remove
                   </button>
@@ -192,21 +194,21 @@ function Categories({ swal }) {
                 setParentCategory("");
                 setProperties([]);
               }}
-              className="btn-default"
+              className="btn"
             >
               Cancel
             </button>
           )}
-          <button className="btn-primary py-1">Save</button>
+          <button className="btn btn-primary py-1">Save</button>
         </div>
       </form>
       {!editedCategory && (
         <table className="basic mt-4">
           <thead>
             <tr>
-              <td>Category name</td>
-              <td>Parent category</td>
-              <td></td>
+              <th>Category name</th>
+              <th>Parent category</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -225,17 +227,19 @@ function Categories({ swal }) {
                   <tr key={count}>
                     <td>{category.name}</td>
                     <td>{category.parent?.name}</td>
-                    <td>
+                    <td className="flex">
                       <button
                         onClick={() => editCategory(category)}
-                        className="btn-default mr-1"
+                        className="btn mr-1 flex items-center gap-1"
                       >
+                        <EditIcon className="w-4 h-4" />
                         Edit
                       </button>
                       <button
                         onClick={() => deleteCategory(category)}
-                        className="btn-red"
+                        className="btn btn-red flex items-center gap-1"
                       >
+                        <TrashIcon className="w-4 h-4" />
                         Delete
                       </button>
                     </td>

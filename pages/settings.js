@@ -71,7 +71,7 @@ function SettingsPage({ swal }) {
             onChange={(ev) => setShippingFee(ev.target.value)}
           />
           <div>
-            <button onClick={saveSettings} className="btn-primary">
+            <button onClick={saveSettings} className="btn btn-primary">
               Save settings
             </button>
           </div>

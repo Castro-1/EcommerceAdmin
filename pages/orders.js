@@ -73,7 +73,7 @@ export default function OrdersPage() {
                   </td>
                   <td className="text-center">
                     <button
-                      className="btn-primary"
+                      className="btn btn-primary"
                       onClick={() => handleFulfill(order._id)}
                     >
                       &#x2713;

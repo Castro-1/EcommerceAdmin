@@ -65,7 +65,10 @@ function AdminsPage({ swal }) {
             value={email}
             onChange={(ev) => setEmail(ev.target.value)}
           />
-          <button type="submit" className="btn-primary py-1 whitespace-nowrap">
+          <button
+            type="submit"
+            className="btn btn-primary py-1 whitespace-nowrap"
+          >
             Save
           </button>
         </div>
@@ -101,7 +104,7 @@ function AdminsPage({ swal }) {
                     onClick={() =>
                       deleteAdmin(adminEmail._id, adminEmail.email)
                     }
-                    className="btn-red"
+                    className=" btn btn-red"
                   >
                     Delete
                   </button>

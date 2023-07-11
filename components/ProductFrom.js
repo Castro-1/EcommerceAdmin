@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Spinner from "./Spinner";
 import { ReactSortable } from "react-sortablejs";
-import Trash from "./icons/Trash";
+import TrashIcon from "./icons/TrashIcon";
 
 export default function ProductForm({
   _id,
@@ -178,7 +178,7 @@ export default function ProductForm({
                   className="absolute bg-gray-300 p-1 rounded-full top-1 left-1 cursor-pointer invisible hover:bg-red-600 hover:text-white"
                   onClick={() => deleteImage(link)}
                 >
-                  <Trash className="w-4 h-4" />
+                  <TrashIcon className="w-4 h-4" />
                 </div>
                 <img src={link} alt="" className="rounded-lg" />
               </div>
