@@ -58,8 +58,8 @@ export default async function handle(req, res) {
         Key: imageKey,
       })
     );
+    res.json("Deleted");
   }
-  res.json("Deleted");
 }
 
 export const config = {
