@@ -11,7 +11,8 @@ import SettingsIcon from "./icons/SettingsIcon";
 import LogoutIcon from "./icons/LogoutIcon";
 
 export default function Nav({ show }) {
-  const inactiveLink = "flex gap-1 p-1";
+  const inactiveLink =
+    "flex gap-1 p-1 hover:text-black [&>*:nth-child(1)]:hover:text-primary";
   const activeLink = inactiveLink + " bg-highlight text-black rounded-sm";
   const inactiveIcon = "w-6 h-6";
   const activeIcon = inactiveIcon + " text-primary";
