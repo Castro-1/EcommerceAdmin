@@ -48,35 +48,37 @@ function SettingsPage({ swal }) {
 
   return (
     <Layout>
-      <h1>Settings</h1>
-      {isLoading && <Spinner fullWidth={true} />}
-      {!isLoading && (
-        <>
-          <label>Featured Product</label>
-          <select
-            value={featuredProductId}
-            onChange={(ev) => setFeaturedProductId(ev.target.value)}
-          >
-            {products.length > 0 &&
-              products.map((product) => (
-                <option key={product._id} value={product._id}>
-                  {product.name}
-                </option>
-              ))}
-          </select>
-          <label>Shipping price (in usd)</label>
-          <input
-            type="number"
-            value={shippingFee}
-            onChange={(ev) => setShippingFee(ev.target.value)}
-          />
-          <div>
-            <button onClick={saveSettings} className="btn btn-primary">
-              Save settings
-            </button>
-          </div>
-        </>
-      )}
+      <div className="max-w-md">
+        <h1>Settings</h1>
+        {isLoading && <Spinner fullWidth={true} />}
+        {!isLoading && (
+          <>
+            <label>Featured Product</label>
+            <select
+              value={featuredProductId}
+              onChange={(ev) => setFeaturedProductId(ev.target.value)}
+            >
+              {products.length > 0 &&
+                products.map((product) => (
+                  <option key={product._id} value={product._id}>
+                    {product.name}
+                  </option>
+                ))}
+            </select>
+            <label>Shipping price (in usd)</label>
+            <input
+              type="number"
+              value={shippingFee}
+              onChange={(ev) => setShippingFee(ev.target.value)}
+            />
+            <div>
+              <button onClick={saveSettings} className="btn btn-primary">
+                Save settings
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </Layout>
   );
 }

@@ -13,7 +13,7 @@ import LogoutIcon from "./icons/LogoutIcon";
 export default function Nav({ show }) {
   const inactiveLink =
     "flex gap-1 p-1 hover:text-black [&>*:nth-child(1)]:hover:text-primary";
-  const activeLink = inactiveLink + " bg-highlight text-black rounded-sm";
+  const activeLink = inactiveLink + " bg-gray-200 text-black rounded-md";
   const inactiveIcon = "w-6 h-6";
   const activeIcon = inactiveIcon + " text-primary";
   const router = useRouter();
@@ -28,7 +28,7 @@ export default function Nav({ show }) {
     <aside
       className={
         (show ? "-left-0" : "-left-full") +
-        " top-0 text-gray-500 p-4 fixed w-full bg-bgGray h-full md:static md:w-auto transition-all"
+        " top-0 text-gray-500 p-4 fixed w-full bg-[#ddd] h-full md:static md:w-auto transition-all"
       }
     >
       <div className="mb-4 mr-4">

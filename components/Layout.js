@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   const { data: session } = useSession();
   if (!session) {
     return (
-      <div className="bg-bgGray w-screen h-screen flex items-center">
+      <div className="bg-[#ddd] w-screen h-screen flex items-center">
         <div className="text-center w-full">
           <h1 className="font-bold mb-4">Admin page Ecommerce</h1>
           <button onClick={() => signIn("google")} className="btn">
@@ -20,7 +20,7 @@ export default function Layout({ children }) {
     );
   }
   return (
-    <div className="bg-bgGray min-h-screen ">
+    <div className="bg-[#ddd] min-h-screen ">
       <div className="block md:hidden flex items-center p-4">
         <button onClick={() => setShowNav(true)}>
           <MenuIcon />

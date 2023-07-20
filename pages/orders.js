@@ -2,7 +2,6 @@ import Layout from "@/components/Layout";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "@/components/Spinner";
-import { Order } from "@/models/Order";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);

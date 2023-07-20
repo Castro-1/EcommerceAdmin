@@ -32,7 +32,7 @@ label {
 }
 
 table.basic {
-  @apply w-full bg-white rounded-sm shadow-md;
+  @apply max-w-[70%] bg-white rounded-sm shadow-md;
 }
 
 table.basic thead tr th {
