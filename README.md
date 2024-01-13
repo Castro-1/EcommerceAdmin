@@ -2,24 +2,25 @@
 
 ## Fully functional responsive E-commerce website with admin section
 
-The primary goal of this project was to learn the steps and challenges of building an e-commerce website by following a course. The course taught the overall essential structure of the project, but more functionalities were added to deepen the understanding of the learnt concpets and technologies. In order for the project to be successful it had to satisfly the following requirements:
+The primary goal of this project was to learn the steps and challenges of building an e-commerce website by following a course. The course taught the overall essential structure of the project, but more functionalities were added to deepen the understanding of the learnt concepts and technologies. In order for the project to be successful it had to satisfly the following requirements:
 
 1. Admin Page:
    * The user can add, update and delete products.
-   * The user can observe the information of the number orders and revenue at different timestamps.
+   * The user can observe the information of the orders and revenue at different timestamps.
    * The user can classify the products in different categories, add discounts to them, define a feature product and the shipping price.
    * The user can see detailed information of all the orders and change their state to delivered.
    * The user can add and delete other admin users.
 2. Ecommerce Page:
    * The user can observe all the products and important information about them.
    * The user can add and remove items from the cart.
-   * The user can add products to a whishlist.
-   * The user can see the information and state of their orders.
+   * The user can log in.
+   * The logged user can add products to a whishlist.
+   * The logged user can see the information and state of their orders.
+   * The logged user can save their order information.
    * The user can add reviews to products.
    * The user can simulate a checkout using Stripe.
    * The user can cancel orders.
-   * The user can save their order information.
-
+  
 ## Try it yourself!
 
 * [**Ecommerce**](https://ecommerce-front-jecg.vercel.app/)
